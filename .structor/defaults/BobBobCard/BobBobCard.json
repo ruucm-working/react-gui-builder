@@ -1,0 +1,196 @@
+[
+  {
+    "type": "BobBobCard",
+    "variant": "default",
+    "children": [],
+    "namespace": "BobBobCard"
+  },
+  {
+    "type": "BobBobCard",
+    "namespace": "BobBobCard",
+    "variant": "01-style",
+    "props": {
+      "style": {
+        "height": "400px",
+        "width": "300px",
+        "borderRadius": "10px",
+        "boxShadow": "0px 10px 44px 0px rgba(90,123,224,0.39)"
+      }
+    },
+    "children": [
+      {
+        "type": "Header",
+        "variant": "default",
+        "children": [
+          {
+            "type": "Title",
+            "variant": "default",
+            "children": [
+              {
+                "type": "span",
+                "variant": "default",
+                "props": {},
+                "children": [],
+                "text": "Bob Ross"
+              }
+            ],
+            "namespace": "BobBobCard",
+            "props": {
+              "style": {
+                "fontFamily": "Nanum Gothic",
+                "margin": "0px",
+                "color": "#ffffff",
+                "position": "absolute",
+                "right": "20px",
+                "bottom": "20px"
+              }
+            }
+          }
+        ],
+        "namespace": "BobBobCard",
+        "props": {
+          "style": {
+            "backgroundImage": "url(http://materialdesignblog.com/wp-content/uploads/2016/06/image3.jpg)",
+            "height": "200px",
+            "borderTopRightRadius": "10px",
+            "borderTopLeftRadius": "10px"
+          }
+        }
+      },
+      {
+        "type": "Image",
+        "variant": "default",
+        "children": [],
+        "namespace": "BobBobCard",
+        "props": {
+          "src": "https://pbs.twimg.com/profile_images/910885630363688961/tWxPL76s_400x400.jpg",
+          "style": {
+            "width": "100px",
+            "height": "100px",
+            "marginTop": "-60px",
+            "marginLeft": "30px",
+            "borderRadius": "50px",
+            "boxShadow": "0px 10px 44px 0px rgba(90,123,224,0.39)"
+          }
+        }
+      },
+      {
+        "type": "Desc",
+        "variant": "default",
+        "children": [
+          {
+            "type": "span",
+            "variant": "default",
+            "props": {},
+            "children": [],
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate lacinia turpis, lobortis dignissim ligula malesuada consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate lacinia turpis, lobortis dignissim ligula malesuada consequat."
+          }
+        ],
+        "namespace": "BobBobCard",
+        "props": {
+          "style": {
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "color": "#797979",
+            "fontFamily": "Nanum Gothic",
+            "fontSize": "13px"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "BobBobCard",
+    "namespace": "BobBobCard",
+    "variant": "01-width 100%",
+    "props": {
+      "style": {
+        "height": "400px",
+        "borderRadius": "10px",
+        "boxShadow": "0px 10px 44px 0px rgba(90,123,224,0.39)",
+        "width": "100%"
+      }
+    },
+    "children": [
+      {
+        "type": "Header",
+        "variant": "default",
+        "children": [
+          {
+            "type": "Title",
+            "variant": "default",
+            "children": [
+              {
+                "type": "span",
+                "variant": "default",
+                "props": {},
+                "children": [],
+                "text": "Bob Ross"
+              }
+            ],
+            "namespace": "BobBobCard",
+            "props": {
+              "style": {
+                "fontFamily": "Nanum Gothic",
+                "margin": "0px",
+                "color": "#ffffff",
+                "position": "absolute",
+                "right": "20px",
+                "bottom": "20px"
+              }
+            }
+          }
+        ],
+        "namespace": "BobBobCard",
+        "props": {
+          "style": {
+            "backgroundImage": "url(http://materialdesignblog.com/wp-content/uploads/2016/06/image3.jpg)",
+            "height": "200px",
+            "borderTopRightRadius": "10px",
+            "borderTopLeftRadius": "10px"
+          }
+        }
+      },
+      {
+        "type": "Image",
+        "variant": "default",
+        "children": [],
+        "namespace": "BobBobCard",
+        "props": {
+          "src": "https://pbs.twimg.com/profile_images/910885630363688961/tWxPL76s_400x400.jpg",
+          "style": {
+            "width": "100px",
+            "height": "100px",
+            "marginTop": "-60px",
+            "marginLeft": "30px",
+            "borderRadius": "50px",
+            "boxShadow": "0px 10px 44px 0px rgba(90,123,224,0.39)"
+          }
+        }
+      },
+      {
+        "type": "Desc",
+        "variant": "default",
+        "children": [
+          {
+            "type": "span",
+            "variant": "default",
+            "props": {},
+            "children": [],
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate lacinia turpis, lobortis dignissim ligula malesuada consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vulputate lacinia turpis, lobortis dignissim ligula malesuada consequat."
+          }
+        ],
+        "namespace": "BobBobCard",
+        "props": {
+          "style": {
+            "paddingLeft": "20px",
+            "paddingRight": "20px",
+            "color": "#797979",
+            "fontFamily": "Nanum Gothic",
+            "fontSize": "13px"
+          }
+        }
+      }
+    ]
+  }
+]

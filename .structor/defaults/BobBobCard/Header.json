@@ -1,0 +1,9 @@
+[
+  {
+    "type": "Header",
+    "variant": "default",
+    "children": [],
+    "namespace": "BobBobCard",
+    "props": {}
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "type": "Layout",
+    "variant": "default",
+    "props": {},
+    "children": [],
+    "namespace": "Layout"
+  },
+  {
+    "type": "Layout",
+    "namespace": "Layout",
+    "variant": "example-01",
+    "props": {
+      "style": {
+        "height": "100px",
+        "backgroundColor": "#fcbfbf"
+      }
+    },
+    "children": [
+      {
+        "type": "Row",
+        "variant": "default",
+        "children": [
+          {
+            "type": "Column",
+            "variant": "default",
+            "children": [
+              {
+                "type": "span",
+                "variant": "default",
+                "props": {},
+                "children": [],
+                "text": "Text"
+              }
+            ],
+            "namespace": "Layout",
+            "props": {
+              "col": 4,
+              "style": {
+                "height": "100%",
+                "backgroundColor": "#ffffff"
+              },
+              "mCol": 2
+            }
+          },
+          {
+            "type": "Column",
+            "variant": "default",
+            "children": [
+              {
+                "type": "span",
+                "variant": "default",
+                "props": {},
+                "children": [],
+                "text": "Text"
+              }
+            ],
+            "namespace": "Layout",
+            "props": {
+              "col": 4,
+              "style": {
+                "height": "100%",
+                "backgroundColor": "#ffffff"
+              },
+              "mCol": 4
+            }
+          },
+          {
+            "type": "Column",
+            "variant": "default",
+            "children": [
+              {
+                "type": "span",
+                "variant": "default",
+                "props": {},
+                "children": [],
+                "text": "Text"
+              }
+            ],
+            "namespace": "Layout",
+            "props": {
+              "col": 4,
+              "style": {
+                "height": "100%",
+                "backgroundColor": "#ffffff"
+              },
+              "mCol": 6
+            }
+          }
+        ],
+        "namespace": "Layout"
+      }
+    ]
+  }
+]
