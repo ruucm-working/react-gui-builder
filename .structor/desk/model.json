@@ -420,6 +420,23 @@
                   "text": "밥카드 페이지"
                 }
               ],
+              "namespace": "Router",
+              "props": {
+                "to": "bob-cards"
+              }
+            },
+            {
+              "type": "Link",
+              "variant": "default",
+              "children": [
+                {
+                  "type": "span",
+                  "variant": "default",
+                  "props": {},
+                  "children": [],
+                  "text": "new page"
+                }
+              ],
               "namespace": "Router"
             }
           ]
