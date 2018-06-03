@@ -3,13 +3,9 @@
 # run structor
 
 ```
-yarn install && yarn add babel-polyfill@6.22.0
+npm install && npm run dev
 ```
-then
 
-```
-yarn dev
-```
 
 # Export App
 
@@ -17,5 +13,5 @@ Press Export App at 'list of pages' pannel,
 
 then find result app using
 ```
-yarn start
+npm run start
 ```
