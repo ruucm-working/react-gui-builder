@@ -16,7 +16,7 @@
     "start:production": "npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
     "dev": "structor",
-    "structor": "structor"
+    "deploy": "npm run build && bash deploy.sh"
   },
   "babel": {
     "presets": [
