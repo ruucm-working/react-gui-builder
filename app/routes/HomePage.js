@@ -4,9 +4,9 @@
  *
  */
 
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { Link } from 'react-router'
+import { Link } from "modules/Router";
 
 class HomePage extends Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -14,26 +14,26 @@ class HomePage extends Component {
   render() {
     return (
       <div>
+
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '1em',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "1em"
           }}
         >
           <div>
-            <h3 style={{ padding: '1em', textAlign: 'center' }}>
+            <h3 style={{ padding: "1em", textAlign: "center" }}>
               <span>home</span>
             </h3>
           </div>
-          <div>
-            <Link to={'new-page'}>new page</Link>
-          </div>
+          <Link to="bob-cards"><span>밥카드 페이지</span></Link>
         </div>
+
       </div>
-    ) // eslint-disable-line
+    ); // eslint-disable-line
   }
 }
 
-export default HomePage
+export default HomePage;
