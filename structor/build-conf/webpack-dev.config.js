@@ -33,17 +33,25 @@ module.exports = [
           },
         },
         {
-          test: /\.scss$/,
+          test: /\.css$/,
           exclude: /node_modules/,
           loader: ExtractTextPlugin.extract({
             fallbackLoader: 'style-loader',
-            use: ['css-loader', 'sass-loader'],
+            loader: 'css-loader',
           }),
         },
         {
           test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)([\?]?.*)$/,
           exclude: /node_modules/,
           loader: 'url-loader',
+        },
+        {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          loader: ExtractTextPlugin.extract({
+            fallbackLoader: 'style-loader',
+            use: ['css-loader', 'sass-loader'],
+          }),
         },
       ],
     },
