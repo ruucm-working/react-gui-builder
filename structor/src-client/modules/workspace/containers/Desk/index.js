@@ -260,7 +260,8 @@ class Container extends Component {
 
     let bodyContainerStyle = {
       position: 'absolute',
-      top: topPanelHeight + 'em',
+      // top: topPanelHeight + 'em',
+      top: '0px',
       // left: 'calc(4em + ' + leftPanelWidth + 'px)',
       //bottom: 'calc(5px + ' + bottomPanelHeight + 'px)',
       // bottom: bottomPanelHeight + 'px',
@@ -268,7 +269,6 @@ class Container extends Component {
       overflow: 'hidden',
       // right: '5px'
       // right: 'calc(5px + ' + rightPanelWidth + 'px)',
-      backgroundColor: 'red',
       width: '100%',
       zIndex: -1,
     }
@@ -278,7 +278,8 @@ class Container extends Component {
       top: '0px',
       left: '0px',
       right: '0px',
-      bottom: 'calc(' + bottomPanelHeight + 'px + 5px)',
+      // bottom: 'calc(' + bottomPanelHeight + 'px + 5px)',
+      bottom: '0px',
       overflowX: 'auto',
       overflowY: 'hidden',
       WebkitOverflowScrolling: 'touch',
