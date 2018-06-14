@@ -808,6 +808,19 @@
           "namespace": "Layout"
         }
       ]
+    },
+    {
+      "pageName": "Page70",
+      "pagePath": "/mag-01",
+      "children": [
+        {
+          "type": "MainNav",
+          "variant": "default",
+          "props": {},
+          "children": [],
+          "namespace": "MainNav"
+        }
+      ]
     }
   ]
 }
