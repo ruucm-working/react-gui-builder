@@ -26,6 +26,7 @@ const leftSideStyle = {
   left: 0,
   bottom: 0,
   backgroundColor: 'rgba(53, 179, 238, 0.2)',
+  zIndex: 1,
 }
 
 const leftSideStyleInner = {

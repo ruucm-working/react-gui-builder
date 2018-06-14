@@ -114,7 +114,8 @@
                 "col": 4,
                 "style": {
                   "height": "100%",
-                  "backgroundColor": "#351ebd"
+                  "backgroundColor": "#351ebd",
+                  "position": "relative"
                 },
                 "mCol": 6
               }

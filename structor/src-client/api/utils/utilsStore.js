@@ -14,79 +14,89 @@
  * limitations under the License.
  */
 
-import { cloneDeep } from 'lodash';
+import { cloneDeep } from 'lodash'
 
-export function findComponentDef (componentTree, componentName, namespace, defaultsIndex = 0) {
-  let componentDef = undefined;
+export function findComponentDef(
+  componentTree,
+  componentName,
+  namespace,
+  defaultsIndex = 0
+) {
+  let componentDef = undefined
   if (componentName && namespace) {
     if (componentTree.modules) {
-      let module = componentTree.modules[namespace];
+      let module = componentTree.modules[namespace]
       if (module && module.components) {
-        componentDef = module.components[componentName];
+        componentDef = module.components[componentName]
       } else {
-        throw Error(`Namespace module ${namespace} was not found.`);
+        throw Error(`Namespace module ${namespace} was not found.`)
       }
     }
   } else if (componentName) {
     if (componentTree.htmlComponents) {
-      componentDef = componentTree.htmlComponents[componentName];
+      componentDef = componentTree.htmlComponents[componentName]
     }
     if (!componentDef && componentTree.components) {
-      componentDef = componentTree.components[componentName];
+      componentDef = componentTree.components[componentName]
     }
   }
   if (componentDef) {
-    const {defaults} = componentDef;
+    const { defaults } = componentDef
     if (defaults && defaults.length > defaultsIndex) {
-      return componentDef;
+      return componentDef
     } else {
-      throw Error(`Model definition for ${componentName} component is missing.`);
+      throw Error(`Model definition for ${componentName} component is missing.`)
     }
   } else {
     if (namespace) {
-      throw Error(`Component ${componentName} in namespace ${namespace} was not found.`);
+      throw Error(
+        `Component ${componentName} in namespace ${namespace} was not found.`
+      )
     } else {
-      throw Error(`Component ${componentName} was not found.`);
+      throw Error(`Component ${componentName} was not found.`)
     }
   }
 }
 
-export function getComponentTupleModel (componentTree, componentNames) {
-  let tupleModel = undefined;
+export function getComponentTupleModel(componentTree, componentNames) {
+  let tupleModel = undefined
   if (componentNames && componentNames.length > 0) {
-    let componentName;
-    let namespace;
-    let firstBracePos;
-    let secondBracePos;
-    let componentDef;
+    let componentName
+    let namespace
+    let firstBracePos
+    let secondBracePos
+    let componentDef
     componentNames.forEach(name => {
-      firstBracePos = name.indexOf('[');
-      secondBracePos = name.indexOf(']');
+      firstBracePos = name.indexOf('[')
+      secondBracePos = name.indexOf(']')
       if (firstBracePos > 0 && secondBracePos > 0) {
-        componentName = name.substr(0, firstBracePos).trim();
-        namespace = name.substr(firstBracePos + 1, secondBracePos - firstBracePos - 1);
+        componentName = name.substr(0, firstBracePos).trim()
+        namespace = name.substr(
+          firstBracePos + 1,
+          secondBracePos - firstBracePos - 1
+        )
       } else {
-        componentName = name.trim();
-        namespace = undefined;
+        componentName = name.trim()
+        namespace = undefined
       }
       try {
-        componentDef = findComponentDef(componentTree, componentName, namespace);
-        const {defaults} = componentDef;
+        componentDef = findComponentDef(componentTree, componentName, namespace)
+        const { defaults } = componentDef
         if (tupleModel) {
-          tupleModel.children = [cloneDeep(defaults[0])];
+          tupleModel.children = [cloneDeep(defaults[0])]
         } else {
-          tupleModel = cloneDeep(defaults[0]);
+          tupleModel = cloneDeep(defaults[0])
         }
       } catch (e) {
         // do nothing;
-        console.error('Error in searching the component: ', e);
+        console.error('Error in searching the component: ', e)
       }
-    });
+    })
   }
-  return tupleModel;
+  return tupleModel
 }
 
-export function getTemplatePageModel () {
+export function getTemplatePageModel() {
   return {
     pageName: 'UnnamedPage',
     pagePath: '/UnnamedPage',
@@ -99,7 +109,7 @@ export function getTemplatePageModel () {
             justifyContent: 'center',
             alignItems: 'center',
             padding: '1em',
-          }
+          },
         },
         children: [
           {
@@ -110,20 +120,21 @@ export function getTemplatePageModel () {
                 props: {
                   style: {
                     padding: '1em',
-                    textAlign: 'center'
-                  }
+                    textAlign: 'center',
+                  },
                 },
                 children: [
                   {
                     type: 'span',
-                    text: 'Click on me and start creating a new cool component.'
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  };
+                    text:
+                      'Click on me and start creating a new cool component.',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }
 }

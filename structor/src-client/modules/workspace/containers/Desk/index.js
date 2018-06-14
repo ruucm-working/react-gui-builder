@@ -202,6 +202,7 @@ class Container extends Component {
       bottom: '0px',
       top: '0px',
       padding: '0 0 5px 0',
+      backgroundColor: 'rgba(0, 0, 255, 0.2)',
     }
 
     let bottomRightPanelStyle = {
@@ -226,6 +227,8 @@ class Container extends Component {
         right: '5px',
         height: '3em',
         borderLeft: '1px solid #dbdbdb',
+        zIndex: 1,
+        backgroundColor: 'rgba(92, 184, 92, 0.3)',
       }
       breadcrumbsComponent = <ToolbarTop style={breadcrumbsTopStyle} />
 
@@ -237,6 +240,8 @@ class Container extends Component {
         paddingTop: '5px',
         height: '3em',
         borderLeft: '1px solid #dbdbdb',
+        zIndex: 1,
+        backgroundColor: 'rgba(92, 184, 92, 0.3)',
       }
       selectionToolbarComponent = (
         <ToolbarSelection style={selectionToolbarStyle} />
@@ -270,7 +275,7 @@ class Container extends Component {
       // right: '5px'
       // right: 'calc(5px + ' + rightPanelWidth + 'px)',
       width: '100%',
-      zIndex: -1,
+      zIndex: 0,
     }
 
     let bodyStyle = {

@@ -14,41 +14,43 @@
  * limitations under the License.
  */
 
-import { forOwn, difference } from 'lodash';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { modelSelector } from './selectors.js';
-import { containerActions } from './actions.js';
+import { forOwn, difference } from 'lodash'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { modelSelector } from './selectors.js'
+import { containerActions } from './actions.js'
 
-import { graphApi } from 'api/index';
+import { graphApi } from 'api/index'
 import {
   PageTreeViewItem,
   PageTreeViewItemText,
   PageTreeViewPlaceholder,
   PlaceholderCircle,
-  MouseOverOverlay
-} from 'components';
-import MouseMenuOverlay from '../../../../components/MouseMenuOverlay';
+  MouseOverOverlay,
+} from 'components'
+import MouseMenuOverlay from '../../../../components/MouseMenuOverlay'
 
-
-const scrollToSelected = function ($frameWindow, key) {
-  setTimeout((function (_frameWindow) {
-    return function () {
-      let $selected = _frameWindow.find('#' + key);
-      if ($selected && $selected.length > 0) {
-        const diff = ($selected.offset().top + _frameWindow.scrollTop()) - _frameWindow.offset().top;
-        const margin = parseInt(_frameWindow.css('height')) / 5;
-        //_frameWindow[0].scrollTop = (diff - margin);
-        //console.log("Scroll to " + (diff - margin));
-        _frameWindow.animate(
-          {scrollTop: (diff - margin)},
-          300
-        );
+const scrollToSelected = function($frameWindow, key) {
+  setTimeout(
+    (function(_frameWindow) {
+      return function() {
+        let $selected = _frameWindow.find('#' + key)
+        if ($selected && $selected.length > 0) {
+          const diff =
+            $selected.offset().top +
+            _frameWindow.scrollTop() -
+            _frameWindow.offset().top
+          const margin = parseInt(_frameWindow.css('height')) / 5
+          //_frameWindow[0].scrollTop = (diff - margin);
+          //console.log("Scroll to " + (diff - margin));
+          _frameWindow.animate({ scrollTop: diff - margin }, 300)
+        }
+        $selected = null
       }
-      $selected = null;
-    };
-  })($frameWindow), 0);
-};
+    })($frameWindow),
+    0
+  )
+}
 
 const panelStyle = {
   padding: '2em 1em 1em 2em',
@@ -56,115 +58,128 @@ const panelStyle = {
   overflow: 'auto',
   border: '1px solid #DBDBDB',
   borderRadius: '3px',
-  position: 'relative'
-};
+  position: 'relative',
+}
 
 class Container extends Component {
-
-  constructor (props) {
-    super(props);
-    this.shouldScroll = true;
-    this.scrollToSelected = this.scrollToSelected.bind(this);
-    this.handleChangeText = this.handleChangeText.bind(this);
-    this.handleContextMenu = this.handleContextMenu.bind(this);
-    this.handleShowMouseMenu = this.handleShowMouseMenu.bind(this);
-    this.handleHideMouseMenu = this.handleHideMouseMenu.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleMouseMenuClick = this.handleMouseMenuClick.bind(this);
-    this.handleSetHighlightSelectedKey = this.handleSetHighlightSelectedKey.bind(this);
-    this.handleRemoveHighlightSelectedKey = this.handleRemoveHighlightSelectedKey.bind(this);
-    const {deskPageModel} = this.props;
-    const pageGraph = deskPageModel ? graphApi.getWrappedModelByPagePath(deskPageModel.currentPagePath) : {};
+  constructor(props) {
+    super(props)
+    this.shouldScroll = true
+    this.scrollToSelected = this.scrollToSelected.bind(this)
+    this.handleChangeText = this.handleChangeText.bind(this)
+    this.handleContextMenu = this.handleContextMenu.bind(this)
+    this.handleShowMouseMenu = this.handleShowMouseMenu.bind(this)
+    this.handleHideMouseMenu = this.handleHideMouseMenu.bind(this)
+    this.handleMouseDown = this.handleMouseDown.bind(this)
+    this.handleMouseMenuClick = this.handleMouseMenuClick.bind(this)
+    this.handleSetHighlightSelectedKey = this.handleSetHighlightSelectedKey.bind(
+      this
+    )
+    this.handleRemoveHighlightSelectedKey = this.handleRemoveHighlightSelectedKey.bind(
+      this
+    )
+    const { deskPageModel } = this.props
+    const pageGraph = deskPageModel
+      ? graphApi.getWrappedModelByPagePath(deskPageModel.currentPagePath)
+      : {}
     this.state = {
       pageGraph,
       showMouseMenu: false,
-
-    };
+    }
   }
 
-  componentDidMount () {
-    this.$frameWindow = $(this.panelElement);
-    this.scrollToSelected();
+  componentDidMount() {
+    this.$frameWindow = $(this.panelElement)
+    this.scrollToSelected()
   }
 
-  componentDidUpdate () {
-    this.scrollToSelected();
+  componentDidUpdate() {
+    this.scrollToSelected()
   }
 
-  componentWillUnmount () {
-    this.$frameWindow = undefined;
+  componentWillUnmount() {
+    this.$frameWindow = undefined
   }
 
   componentWillReceiveProps(nextProps) {
-    const {deskPageModel} = this.props;
-    const {
-      deskPageModel: newDeskPageModel,
-    } = nextProps;
-    if (newDeskPageModel.reloadPageCounter !== deskPageModel.reloadPageCounter
-      || newDeskPageModel.currentPagePath !== deskPageModel.currentPagePath
-      || newDeskPageModel.markedUpdateCounter !== deskPageModel.markedUpdateCounter
-      || newDeskPageModel.modelUpdateCounter !== deskPageModel.modelUpdateCounter) {
-      this.setState({pageGraph: graphApi.getWrappedModelByPagePath(newDeskPageModel.currentPagePath)});
+    const { deskPageModel } = this.props
+    const { deskPageModel: newDeskPageModel } = nextProps
+    if (
+      newDeskPageModel.reloadPageCounter !== deskPageModel.reloadPageCounter ||
+      newDeskPageModel.currentPagePath !== deskPageModel.currentPagePath ||
+      newDeskPageModel.markedUpdateCounter !==
+        deskPageModel.markedUpdateCounter ||
+      newDeskPageModel.modelUpdateCounter !== deskPageModel.modelUpdateCounter
+    ) {
+      this.setState({
+        pageGraph: graphApi.getWrappedModelByPagePath(
+          newDeskPageModel.currentPagePath
+        ),
+      })
     }
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-
-    const {deskPageModel, currentSelectedKeys, isInsertionModeOn} = this.props;
-    const {showMouseMenu, pointX, pointY} = this.state;
+  shouldComponentUpdate(nextProps, nextState) {
+    const { deskPageModel, currentSelectedKeys, isInsertionModeOn } = this.props
+    const { showMouseMenu, pointX, pointY } = this.state
     const {
       deskPageModel: newDeskPageModel,
       currentSelectedKeys: newSelectedKeys,
-      isInsertionModeOn: nextInsertionModeOn
-    } = nextProps;
+      isInsertionModeOn: nextInsertionModeOn,
+    } = nextProps
 
     if (!this.shouldScroll) {
-      this.shouldScroll = newSelectedKeys !== currentSelectedKeys;
+      this.shouldScroll = newSelectedKeys !== currentSelectedKeys
     }
     return (
-      newDeskPageModel.reloadPageCounter !== deskPageModel.reloadPageCounter
-      || newDeskPageModel.currentPagePath !== deskPageModel.currentPagePath
-      || newDeskPageModel.markedUpdateCounter !== deskPageModel.markedUpdateCounter
-      || newDeskPageModel.modelUpdateCounter !== deskPageModel.modelUpdateCounter
-      || isInsertionModeOn !== nextInsertionModeOn
-      || showMouseMenu !== nextState.showMouseMenu
-      || pointX !== nextState.pointX
-      || pointY !== nextState.pointY
-    );
+      newDeskPageModel.reloadPageCounter !== deskPageModel.reloadPageCounter ||
+      newDeskPageModel.currentPagePath !== deskPageModel.currentPagePath ||
+      newDeskPageModel.markedUpdateCounter !==
+        deskPageModel.markedUpdateCounter ||
+      newDeskPageModel.modelUpdateCounter !==
+        deskPageModel.modelUpdateCounter ||
+      isInsertionModeOn !== nextInsertionModeOn ||
+      showMouseMenu !== nextState.showMouseMenu ||
+      pointX !== nextState.pointX ||
+      pointY !== nextState.pointY
+    )
   }
 
-  scrollToSelected () {
+  scrollToSelected() {
     if (this.shouldScroll) {
-      const selectedKeys = this.props.currentSelectedKeys;
+      const selectedKeys = this.props.currentSelectedKeys
       if (selectedKeys && selectedKeys.length > 0) {
-        scrollToSelected(this.$frameWindow, selectedKeys[selectedKeys.length - 1]);
+        scrollToSelected(
+          this.$frameWindow,
+          selectedKeys[selectedKeys.length - 1]
+        )
       }
-      this.shouldScroll = false;
+      this.shouldScroll = false
     }
   }
 
-  handleContextMenu (e) {
-      e.stopPropagation();
-      e.preventDefault();
+  handleContextMenu(e) {
+    e.stopPropagation()
+    e.preventDefault()
   }
 
-  handleMouseDown (e) {
-    this.handleHideMouseMenu();
+  handleMouseDown(e) {
+    this.handleHideMouseMenu()
   }
 
-  handlePlaceholderClick = (type) => (nodeKey) => {
-    const {handleBefore, handleAfter, handleReplace} = this.props;
+  handlePlaceholderClick = type => nodeKey => {
+    const { handleBefore, handleAfter, handleReplace } = this.props
     if (type === 'pasteAfter') {
-      handleAfter(nodeKey);
+      handleAfter(nodeKey)
     } else if (type === 'pasteBefore') {
-      handleBefore(nodeKey);
+      handleBefore(nodeKey)
     } else if (type === 'pasteReplace') {
-      handleReplace(nodeKey);
+      handleReplace(nodeKey)
     }
-  };
+  }
 
-  handleMouseMenuClick (type, itemKey) {
-    const {currentSelectedKeys} = this.props;
+  handleMouseMenuClick(type, itemKey) {
+    const { currentSelectedKeys } = this.props
     const {
       handleBefore,
       handleAfter,
@@ -172,71 +187,70 @@ class Container extends Component {
       handleFirst,
       setForCuttingKeys,
       setForCopyingKeys,
-      deleteSelected
-    } = this.props;
+      deleteSelected,
+    } = this.props
     if (type === 'after') {
-      handleAfter(itemKey);
+      handleAfter(itemKey)
     } else if (type === 'before') {
-      handleBefore(itemKey);
+      handleBefore(itemKey)
     } else if (type === 'replace') {
-      handleReplace(itemKey);
+      handleReplace(itemKey)
     } else if (type === 'first') {
-      handleFirst(itemKey);
+      handleFirst(itemKey)
     } else if (type === 'cut') {
-      setForCuttingKeys(currentSelectedKeys);
+      setForCuttingKeys(currentSelectedKeys)
     } else if (type === 'copy') {
-      setForCopyingKeys(currentSelectedKeys);
+      setForCopyingKeys(currentSelectedKeys)
     } else if (type === 'delete') {
-      deleteSelected();
+      deleteSelected()
     }
-    this.handleHideMouseMenu();
-  };
-
-  handleSetHighlightSelectedKey (e) {
-    const key = e.currentTarget.dataset.key;
-    const {setHighlightSelectedKey} = this.props;
-    setHighlightSelectedKey(key, true);
+    this.handleHideMouseMenu()
   }
 
-  handleRemoveHighlightSelectedKey (e) {
-    const key = e.currentTarget.dataset.key;
-    const {setHighlightSelectedKey} = this.props;
-    setHighlightSelectedKey(key, false);
+  handleSetHighlightSelectedKey(e) {
+    const key = e.currentTarget.dataset.key
+    const { setHighlightSelectedKey } = this.props
+    setHighlightSelectedKey(key, true)
   }
 
-  handleChangeText (text, nodeKey) {
-    this.props.changeText(text, nodeKey);
-  };
+  handleRemoveHighlightSelectedKey(e) {
+    const key = e.currentTarget.dataset.key
+    const { setHighlightSelectedKey } = this.props
+    setHighlightSelectedKey(key, false)
+  }
 
-  handleShowMouseMenu (e, itemKey) {
+  handleChangeText(text, nodeKey) {
+    this.props.changeText(text, nodeKey)
+  }
+
+  handleShowMouseMenu(e, itemKey) {
     this.setState({
       showMouseMenu: true,
       pointX: e.pageX,
       pointY: e.pageY,
       itemKey,
-    });
+    })
   }
 
-  handleHideMouseMenu () {
-    this.setState({showMouseMenu: false});
+  handleHideMouseMenu() {
+    this.setState({ showMouseMenu: false })
   }
 
-  buildNode = (graphNode) => {
+  buildNode = graphNode => {
+    let inner = []
+    const modelNode = graphNode.modelNode
+    const { setSelectedKey, isInsertionModeOn } = this.props
 
-    let inner = [];
-    const modelNode = graphNode.modelNode;
-    const {setSelectedKey, isInsertionModeOn} = this.props;
-
-    let innerProps = [];
+    let innerProps = []
     if (graphNode.props) {
       forOwn(graphNode.props, (prop, propName) => {
-        innerProps.push(this.buildNode(prop));
-      });
+        innerProps.push(this.buildNode(prop))
+      })
     }
-    let children = [];
+    let children = []
     if (graphNode.children && graphNode.children.length > 0) {
       graphNode.children.forEach(node => {
-        children.push(this.buildNode(node));
+        children.push(this.buildNode(node))
         if (isInsertionModeOn) {
           children.push(
             <PageTreeViewPlaceholder
@@ -247,9 +261,9 @@ class Container extends Component {
               onMouseEnter={this.handleSetHighlightSelectedKey}
               onMouseLeave={this.handleRemoveHighlightSelectedKey}
             />
-          );
+          )
         }
-      });
+      })
     } else if (modelNode.text !== undefined) {
       inner.push(
         <PageTreeViewItemText
@@ -258,7 +272,7 @@ class Container extends Component {
           onChangeText={this.handleChangeText}
           textValue={modelNode.text}
         />
-      );
+      )
     }
 
     if (innerProps.length > 0 || children.length > 0) {
@@ -266,25 +280,31 @@ class Container extends Component {
         <ul
           id={graphNode.key}
           key={'list' + graphNode.key}
-          style={{display: 'block'}}
-          className={graphNode.selected ? 'umy-treeview-list-selected' : 'umy-treeview-list'}
+          style={{ display: 'block' }}
+          className={
+            graphNode.selected
+              ? 'umy-treeview-list-selected'
+              : 'umy-treeview-list'
+          }
         >
           {innerProps}
-          {graphNode.children && graphNode.children.length > 0 && isInsertionModeOn &&
-          <PageTreeViewPlaceholder
-            key={'firstItemPlaceholder' + graphNode.children[0].key}
-            itemKey={graphNode.children[0].key}
-            title="Place component before selected"
-            onClick={this.handlePlaceholderClick('pasteBefore')}
-            onMouseEnter={this.handleSetHighlightSelectedKey}
-            onMouseLeave={this.handleRemoveHighlightSelectedKey}
-          />
-          }
+          {graphNode.children &&
+            graphNode.children.length > 0 &&
+            isInsertionModeOn && (
+              <PageTreeViewPlaceholder
+                key={'firstItemPlaceholder' + graphNode.children[0].key}
+                itemKey={graphNode.children[0].key}
+                title="Place component before selected"
+                onClick={this.handlePlaceholderClick('pasteBefore')}
+                onMouseEnter={this.handleSetHighlightSelectedKey}
+                onMouseLeave={this.handleRemoveHighlightSelectedKey}
+              />
+            )}
           {children}
         </ul>
-      );
+      )
     }
-    let replacePlaceholder = null;
+    let replacePlaceholder = null
     if (isInsertionModeOn) {
       replacePlaceholder = (
         <PlaceholderCircle
@@ -296,7 +316,7 @@ class Container extends Component {
           onMouseEnter={this.handleSetHighlightSelectedKey}
           onMouseLeave={this.handleRemoveHighlightSelectedKey}
         />
-      );
+      )
     }
     return (
       <PageTreeViewItem
@@ -318,18 +338,17 @@ class Container extends Component {
       >
         {inner}
       </PageTreeViewItem>
-    );
-  };
+    )
+  }
 
-  render () {
+  render() {
+    const { pageGraph, showMouseMenu, pointX, pointY, itemKey } = this.state
+    const { isInsertionModeOn } = this.props
 
-    const {pageGraph, showMouseMenu, pointX, pointY, itemKey} = this.state;
-    const {isInsertionModeOn} = this.props;
-
-    let listItems = [];
+    let listItems = []
     if (pageGraph) {
       pageGraph.children.forEach((child, index) => {
-        listItems.push(this.buildNode(child));
+        listItems.push(this.buildNode(child))
         if (isInsertionModeOn) {
           listItems.push(
             <PageTreeViewPlaceholder
@@ -341,34 +360,32 @@ class Container extends Component {
               onMouseEnter={this.handleSetHighlightSelectedKey}
               onMouseLeave={this.handleRemoveHighlightSelectedKey}
             />
-          );
+          )
         }
-      });
+      })
     }
 
     return (
       <div
-        ref={me => this.panelElement = me}
+        ref={me => (this.panelElement = me)}
         style={panelStyle}
         onContextMenu={this.handleContextMenu}
         onMouseDown={this.handleMouseDown}
       >
         <div>
-          <ul
-            className='umy-treeview-list'
-            style={{border: 0}}
-          >
-            {pageGraph.children.length > 0 && isInsertionModeOn &&
-            <PageTreeViewPlaceholder
-              key={'firstItemPlaceholder'}
-              isTopLevelPlace={true}
-              itemKey={pageGraph.children[0].key}
-              title="Place component before selected"
-              onClick={this.handlePlaceholderClick('pasteBefore')}
-              onMouseEnter={this.handleSetHighlightSelectedKey}
-              onMouseLeave={this.handleRemoveHighlightSelectedKey}
-            />
-            }
+          <ul className="umy-treeview-list" style={{ border: 0 }}>
+            {pageGraph.children.length > 0 &&
+              isInsertionModeOn && (
+                <PageTreeViewPlaceholder
+                  key={'firstItemPlaceholder'}
+                  isTopLevelPlace={true}
+                  itemKey={pageGraph.children[0].key}
+                  title="Place component before selected"
+                  onClick={this.handlePlaceholderClick('pasteBefore')}
+                  onMouseEnter={this.handleSetHighlightSelectedKey}
+                  onMouseLeave={this.handleRemoveHighlightSelectedKey}
+                />
+              )}
             {listItems}
           </ul>
         </div>
@@ -381,10 +398,11 @@ class Container extends Component {
           itemKey={itemKey}
         />
       </div>
-    );
+    )
   }
-
 }
 
-export default connect(modelSelector, containerActions)(Container);
-
+export default connect(
+  modelSelector,
+  containerActions
+)(Container)
