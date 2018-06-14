@@ -262,20 +262,34 @@ class Container extends Component {
       overflow: 'hidden',
       padding: '0 5px 5px 0',
     }
-
-    let bodyContainerStyle = {
-      position: 'absolute',
-      // top: topPanelHeight + 'em',
-      top: '0px',
-      // left: 'calc(4em + ' + leftPanelWidth + 'px)',
-      //bottom: 'calc(5px + ' + bottomPanelHeight + 'px)',
-      // bottom: bottomPanelHeight + 'px',
-      bottom: '0px',
-      overflow: 'hidden',
-      // right: '5px'
-      // right: 'calc(5px + ' + rightPanelWidth + 'px)',
-      width: '100%',
-      zIndex: 0,
+    let bodyContainerStyle
+    if (!deskPageModel.isLivePreviewModeOn) {
+      bodyContainerStyle = {
+        position: 'absolute',
+        top: topPanelHeight + 'em',
+        left: 'calc(4em + ' + leftPanelWidth + 'px)',
+        //bottom: 'calc(5px + ' + bottomPanelHeight + 'px)',
+        // bottom: bottomPanelHeight + 'px',
+        bottom: '0px',
+        overflow: 'hidden',
+        // right: '5px'
+        right: 'calc(5px + ' + rightPanelWidth + 'px)',
+      }
+    } else {
+      bodyContainerStyle = {
+        position: 'absolute',
+        // top: topPanelHeight + 'em',
+        top: '0px',
+        // left: 'calc(4em + ' + leftPanelWidth + 'px)',
+        //bottom: 'calc(5px + ' + bottomPanelHeight + 'px)',
+        // bottom: bottomPanelHeight + 'px',
+        bottom: '0px',
+        overflow: 'hidden',
+        // right: '5px'
+        // right: 'calc(5px + ' + rightPanelWidth + 'px)',
+        width: '100%',
+        zIndex: 0,
+      }
     }
 
     let bodyStyle = {
@@ -283,8 +297,7 @@ class Container extends Component {
       top: '0px',
       left: '0px',
       right: '0px',
-      // bottom: 'calc(' + bottomPanelHeight + 'px + 5px)',
-      bottom: '0px',
+      bottom: 'calc(' + bottomPanelHeight + 'px + 5px)',
       overflowX: 'auto',
       overflowY: 'hidden',
       WebkitOverflowScrolling: 'touch',
