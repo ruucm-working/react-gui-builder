@@ -817,7 +817,50 @@
           "type": "MainNav",
           "variant": "default",
           "props": {},
-          "children": [],
+          "children": [
+            {
+              "type": "Logo",
+              "variant": "default",
+              "children": [
+                {
+                  "type": "LogoImage",
+                  "variant": "default",
+                  "children": [],
+                  "namespace": "MainNav",
+                  "props": {
+                    "style": {
+                      "fontSize": "60px"
+                    }
+                  }
+                },
+                {
+                  "type": "LogoText",
+                  "variant": "default",
+                  "children": [
+                    {
+                      "type": "span",
+                      "variant": "default",
+                      "props": {},
+                      "children": [],
+                      "text": "하버 매거진"
+                    }
+                  ],
+                  "namespace": "MainNav",
+                  "props": {
+                    "style": {
+                      "fontSize": "50px"
+                    }
+                  }
+                }
+              ],
+              "namespace": "MainNav",
+              "props": {
+                "style": {
+                  "backgroundColor": "#525ef6"
+                }
+              }
+            }
+          ],
           "namespace": "MainNav"
         }
       ]

@@ -1,1 +1,60 @@
-[{"type":"MainNav","variant":"default","props":{},"children":[],"namespace":"MainNav"}]
+[
+  {
+    "type": "MainNav",
+    "variant": "default",
+    "props": {},
+    "children": [],
+    "namespace": "MainNav"
+  },
+  {
+    "type": "MainNav",
+    "namespace": "MainNav",
+    "variant": "style-01",
+    "props": {},
+    "children": [
+      {
+        "type": "Logo",
+        "variant": "default",
+        "children": [
+          {
+            "type": "LogoImage",
+            "variant": "default",
+            "children": [],
+            "namespace": "MainNav",
+            "props": {
+              "style": {
+                "fontSize": "60px"
+              }
+            }
+          },
+          {
+            "type": "LogoText",
+            "variant": "default",
+            "children": [
+              {
+                "type": "span",
+                "variant": "default",
+                "props": {},
+                "children": [],
+                "text": "하버 매거진"
+              }
+            ],
+            "namespace": "MainNav",
+            "props": {
+              "style": {
+                "fontSize": "50px",
+                "color": "#ffffff"
+              }
+            }
+          }
+        ],
+        "namespace": "MainNav",
+        "props": {
+          "style": {
+            "backgroundColor": "#525ef6"
+          }
+        }
+      }
+    ]
+  }
+]

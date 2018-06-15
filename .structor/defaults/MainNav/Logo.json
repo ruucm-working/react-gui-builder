@@ -1,0 +1,40 @@
+[
+  {
+    "type": "Logo",
+    "variant": "default",
+    "children": [],
+    "namespace": "MainNav"
+  },
+  {
+    "type": "Logo",
+    "namespace": "MainNav",
+    "variant": "style-01",
+    "props": {
+      "style": {
+        "backgroundColor": "#525ef6"
+      }
+    },
+    "children": [
+      {
+        "type": "LogoImage",
+        "variant": "default",
+        "children": [],
+        "namespace": "MainNav"
+      },
+      {
+        "type": "LogoText",
+        "variant": "default",
+        "children": [
+          {
+            "type": "span",
+            "variant": "default",
+            "props": {},
+            "children": [],
+            "text": "Text"
+          }
+        ],
+        "namespace": "MainNav"
+      }
+    ]
+  }
+]
