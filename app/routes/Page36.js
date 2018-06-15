@@ -19,7 +19,11 @@ class Page36 extends Component {
         <Row>
           <Column
             col={4}
-            style={{ height: "100%", backgroundColor: "#351ebd" }}
+            style={{
+              height: "100%",
+              backgroundColor: "#351ebd",
+              position: "relative"
+            }}
             mCol={6}
           >
             <BobBobCard

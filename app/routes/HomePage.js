@@ -29,7 +29,7 @@ class HomePage extends Component {
             </h3>
           </div>
           <Link to="bob-cards"><span>밥카드 페이지</span></Link>
-          <Link to="new-page"><span>new page</span></Link>
+          <Link><span>new page</span></Link>
         </div>
 
       </div>

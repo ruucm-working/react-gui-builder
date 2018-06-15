@@ -7,11 +7,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import HarborMagazineIcon from '../../../../libs/fonts/HarborMagazineIcon'
+// import HarborMagazineIcon from '../../../../libs/fonts/HarborMagazineIcon'
 
-const LogoImageWrapper = styled.span`
-  ${HarborMagazineIcon};
-`
+const LogoImageWrapper = styled.span``
 
 const LogoImage = props => {
   return (
