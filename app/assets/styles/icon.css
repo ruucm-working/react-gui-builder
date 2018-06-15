@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'magharbor';
+  src:  url('fonts/magharbor/magharbor.eot?599818');
+  src:  url('fonts/magharbor/magharbor.eot?599818#iefix') format('embedded-opentype'),
+    url('fonts/magharbor/magharbor.ttf?599818') format('truetype'),
+    url('fonts/magharbor/magharbor.woff?599818') format('woff'),
+    url('fonts/magharbor/magharbor.svg?599818#magharbor') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.magharbor {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'magharbor' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.magharbor-main-logo:before {
+  content: "\e900";
+  color: #fff;
+}

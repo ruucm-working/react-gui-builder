@@ -106,6 +106,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "",
       "post-commit": "git push origin master"
     }
   }

@@ -10,6 +10,11 @@ import { useScroll } from 'react-router-scroll'
 import rootRoute from './routes'
 
 import configureStore from './store'
+
+import './assets/styles/normalize.css'
+import './assets/styles/font.css'
+import './assets/styles/icon.css'
+
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history

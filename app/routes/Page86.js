@@ -1,6 +1,6 @@
 /**
  *
- * Page70
+ * Page86
  *
  */
 
@@ -8,7 +8,7 @@ import React, { Component } from "react";
 
 import { MainNav, Logo, LogoImage, LogoText } from "modules/MainNav";
 
-class Page70 extends Component {
+class Page86 extends Component {
   // eslint-disable-line react/prefer-stateless-function
 
   render() {
@@ -26,7 +26,7 @@ class Page70 extends Component {
                 fontWeight: 100,
                 verticalAlign: "middle",
                 lineHeight: "116px",
-                marginLeft: "5px"
+                marginLeft: "18px"
               }}
             >
               <span>하버 매거진</span>
@@ -39,4 +39,4 @@ class Page70 extends Component {
   }
 }
 
-export default Page70;
+export default Page86;
