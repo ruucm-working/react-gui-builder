@@ -1,11 +1,17 @@
-### Structor React App Starter
+### React GUI Builder
 
-# run structor
+# run react-gui-builder
 
 ```
 npm install && npm run dev
 ```
 
+
+# modify react-gui-builder
+
+```
+cd react-gui-builder && npm install && npm run build-client-dev
+```
 
 # Export App
 
