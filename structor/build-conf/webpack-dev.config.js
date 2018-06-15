@@ -9,7 +9,7 @@ module.exports = [
       main: './src-client/main.js',
     },
     output: {
-      path: path.resolve('../node_modules/structor/static'),
+      path: path.resolve('../node_modules/react-gui-builder/static'),
       filename: '[name].js',
     },
     devtool: 'inline-source-map',
