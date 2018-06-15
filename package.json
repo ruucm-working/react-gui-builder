@@ -91,7 +91,6 @@
     "file-loader": "0.9.0",
     "html-loader": "0.4.4",
     "html-webpack-plugin": "2.24.0",
-    "husky": "^1.0.0-rc.8",
     "image-webpack-loader": "2.0.0",
     "imports-loader": "0.6.5",
     "json-loader": "0.5.4",
@@ -103,11 +102,5 @@
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.16.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "",
-      "post-commit": "git push origin master"
-    }
   }
 }
