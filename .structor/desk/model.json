@@ -5,58 +5,69 @@
       "pagePath": "/mag-01",
       "children": [
         {
-          "type": "MainNav",
-          "namespace": "MainNav",
-          "variant": "style-01",
-          "props": {},
+          "type": "div",
+          "variant": "default",
+          "props": {
+            "style": {
+              "backgroundColor": "#1434f7",
+              "paddingTop": "24px",
+              "paddingBottom": "24px"
+            }
+          },
           "children": [
             {
-              "type": "Logo",
+              "type": "Row",
               "variant": "default",
               "children": [
                 {
-                  "type": "LogoImage",
-                  "variant": "default",
-                  "children": [],
-                  "namespace": "MainNav",
-                  "props": {
-                    "style": {
-                      "fontSize": "60px",
-                      "verticalAlign": "middle"
-                    }
-                  }
-                },
-                {
-                  "type": "LogoText",
+                  "type": "Column",
                   "variant": "default",
                   "children": [
                     {
-                      "type": "span",
+                      "type": "Animations",
                       "variant": "default",
                       "props": {},
                       "children": [],
-                      "text": "하버 매거진"
+                      "namespace": "Animations"
                     }
                   ],
-                  "namespace": "MainNav",
+                  "namespace": "Layout",
                   "props": {
-                    "style": {
-                      "fontSize": "50px",
-                      "color": "#ffffff",
-                      "fontFamily": "NanumSquare",
-                      "fontWeight": 100,
-                      "verticalAlign": "middle",
-                      "lineHeight": "116px",
-                      "marginLeft": "18px"
+                    "col": 6,
+                    "mCol": 12
+                  }
+                },
+                {
+                  "type": "Column",
+                  "variant": "default",
+                  "children": [
+                    {
+                      "type": "img",
+                      "variant": "default",
+                      "props": {
+                        "src": "https://66.media.tumblr.com/35752a031db1718c5172295a5ed345cc/tumblr_p52m2zHoRG1wun3pho1_r6_640.gif",
+                        "style": {
+                          "width": "100%",
+                          "objectFit": "contain",
+                          "height": "100%"
+                        }
+                      },
+                      "children": []
                     }
+                  ],
+                  "namespace": "Layout",
+                  "props": {
+                    "col": 6,
+                    "mCol": 12
                   }
                 }
               ],
-              "namespace": "MainNav",
+              "namespace": "Layout",
               "props": {
                 "style": {
-                  "backgroundColor": "#525ef6",
-                  "paddingLeft": "25px"
+                  "backgroundColor": "#e78080",
+                  "marginLeft": "24px",
+                  "marginRight": "24px"
                 }
               }
             }
