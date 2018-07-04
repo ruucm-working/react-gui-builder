@@ -1,3 +1,3 @@
-import { Hover } from 'ruucm-blocks/animations'
+import { Hover } from 'ruucm-blocks/animation'
 
 export default Hover
