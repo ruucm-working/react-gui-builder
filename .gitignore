@@ -4,6 +4,7 @@
 /src/environments/environment.ts
 NOTES.md
 functions/*
+.vscode
 
 # compiled output
 /dist
