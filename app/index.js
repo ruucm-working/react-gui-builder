@@ -12,9 +12,6 @@ import rootRoute from './routes'
 import configureStore from './store'
 
 import './appStyle'
-// import './assets/styles/normalize.css'
-// import './assets/styles/font.css'
-// import './assets/styles/icon.css'
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
