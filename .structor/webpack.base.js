@@ -96,6 +96,12 @@ module.exports = (options) => ({
 			'main',
 		],
 	},
+	 node: {
+	    console: true,
+	    fs: 'empty',
+	    net: 'empty',
+	    tls: 'empty',
+	},
 
 	// Emit a source map for easier debugging
 	devtool: 'cheap-module-eval-source-map',
