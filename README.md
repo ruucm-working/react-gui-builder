@@ -43,3 +43,5 @@ npm run start
 ├── package.json
 └── README.md
 ```
+## Credit
+Original Source Codes from here [ipselon/structor](https://github.com/ipselon/structor)
