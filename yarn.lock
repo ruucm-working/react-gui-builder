@@ -7286,9 +7286,9 @@ run-node@^1.0.0:
     redux "^4.0.0"
     styled-components "3.3.0"
 
-ruucm-util@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/ruucm-util/-/ruucm-util-0.10.0.tgz#62407451e3d06332c07fd67fec0d5bbc503528e1"
+ruucm-util@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/ruucm-util/-/ruucm-util-0.11.0.tgz#3aefc025d3ea03733881fcadef84913bedf4848d"
 
 rx-lite@^3.1.2:
   version "3.1.2"
