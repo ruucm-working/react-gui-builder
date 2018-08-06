@@ -23,6 +23,7 @@ npm run start
 ```
 
 # Folder Structure
+```
 .
 ├── .structor               # GUI Builder(structor) Settings (http://localhost:2223)
 │   ├── modules             # modules made by GUI Builder
@@ -39,3 +40,4 @@ npm run start
 ├── deploy.sh               # deploy script (yarn deploy)
 ├── package.json
 └── README.md
+```
