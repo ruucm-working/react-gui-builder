@@ -1,5 +1,3 @@
-import 'appStyle'
-
 import * as Centering from 'modules/Centering'
 import * as Animations from 'modules/Animations'
 import * as Router from 'modules/Router'
